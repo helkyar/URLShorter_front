@@ -1,12 +1,12 @@
 import { useCallback, useContext } from "react";
-import Context from "contexts/user";
-import loginSrv from "helpers/login";
+import Context from "../contexts/user";
+import loginSrv from "./login";
 import { useNavigate } from "react-router-dom";
 
 export const useSession = () => {
   const navigate = useNavigate();
   const { jwt, setJWT, user, setUser } = useContext(Context);
-  let logfail = "alert inicial";
+  let logfail = false;
   const loger = useCallback(
     ({ login, password }) => {
       loginSrv({ login, password })
