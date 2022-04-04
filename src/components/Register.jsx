@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import register from "helpers/session/session";
+import { useSession } from "helpers/session/useSession";
 
 export const Register = () => {
   const navigate = useNavigate();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { loger, isLogged } = useSession();
 
   const userRegister = async (e) => {
     e.preventDefault();
-    // await register({ username, password });
+    //(!) Validation logic: should be separated form the view
+    if (!username.trim() || !password.trim()) {
+      console.log("Introduce valid credentials");
+      return;
+    }
+    const credentials = { username, password };
+    //------------------------------------------------------
+    await register(credentials, "register");
+
+    // Maybe an ineficient way to handle login
+    await loger(credentials);
     setUsername("");
     setPassword("");
   };
+
+  useEffect(() => {
+    if (isLogged) navigate("/");
+  }, [isLogged, navigate]);
 
   return (
     <>
