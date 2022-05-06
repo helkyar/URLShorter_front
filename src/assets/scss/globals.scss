@@ -6,6 +6,9 @@
   margin-top: 1rem;
 }
 :root {
+  --btn-background: darkcyan;
+  --btn-color: white;
+  --padding-default: 0.5rem;
 }
 // React Legacy Styles
 body {
@@ -20,7 +23,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+.btn {
+  background-color: var(--btn-background);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 5px;
+  padding: var(--padding-default);
+}
+input {
+  padding: calc(var(--padding-default) - 1px);
+  border: 0.5px solid gray;
+  border-radius: 5px;
+}
 #hidden {
   display: none;
 }

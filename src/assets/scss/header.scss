@@ -1,0 +1,12 @@
+header {
+  margin: 0 1rem;
+  display: flex;
+}
+nav {
+  display: flex;
+  align-items: baseline;
+  margin-left: auto;
+}
+nav * + * {
+  margin-left: 1rem;
+}

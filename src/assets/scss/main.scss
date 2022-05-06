@@ -10,3 +10,26 @@
 .app > button {
   margin-bottom: 1rem;
 }
+.shorty-btn {
+  margin-left: 1rem;
+}
+.shorty-show {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.shorty-show * + * {
+  margin-left: 1rem;
+}
+.shorty-link {
+  display: flex;
+  align-items: baseline;
+}
+.ellipsis::after {
+  content: "...";
+}
+.shorty-link p {
+  max-width: 5rem;
+  overflow: hidden;
+}
