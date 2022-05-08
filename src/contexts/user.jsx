@@ -8,8 +8,9 @@ export function UserContextProvider({ children }) {
 
   useEffect(() => {
     if (typeof user === "string") {
-      let userArray = user.split(",");
-      setUser(userArray);
+      let data = user.split(",");
+      let userObj = { id: data[0], username: data[1] };
+      setUser(userObj);
     }
   }, [user]);
 

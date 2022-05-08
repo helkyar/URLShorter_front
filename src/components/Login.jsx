@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useSession } from "helpers/session/useSession";
 
-export const Login = () => {
+export const Login = ({ setOnOpen }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pswd, setPswd] = useState("");
@@ -26,7 +26,7 @@ export const Login = () => {
   };
 
   useEffect(() => {
-    if (isLogged) navigate("/");
+    if (isLogged) setOnOpen(false);
     if (logfail) alert("Retry");
   }, [logfail, isLogged, navigate]);
 
@@ -47,7 +47,9 @@ export const Login = () => {
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
         />
-        <button onClick={(e) => userLogin(e)}>Login</button>
+        <button className="btn" onClick={(e) => userLogin(e)}>
+          Login
+        </button>
       </form>
     </>
   );

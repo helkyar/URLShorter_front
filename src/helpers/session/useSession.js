@@ -31,7 +31,7 @@ export const useSession = () => {
     window.sessionStorage.removeItem("user");
     setJWT(null);
     setUser(null);
-    navigate("/login");
+    navigate("/");
   }, [setJWT]);
 
   return { user, logout, loger, isLogged: Boolean(jwt), logfail };

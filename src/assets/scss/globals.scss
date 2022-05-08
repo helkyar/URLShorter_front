@@ -6,9 +6,14 @@
   margin-top: 1rem;
 }
 :root {
+  --btn-background-second: #fe6a16;
+  --btn-background-second-hover: #d65d18;
   --btn-background: darkcyan;
+  --btn-background-hover: rgb(3, 111, 111);
   --btn-color: white;
   --padding-default: 0.5rem;
+  --margin-width: 0 4rem;
+  --border-radius: 5px;
 }
 // React Legacy Styles
 body {
@@ -17,24 +22,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 620px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.btn {
-  background-color: var(--btn-background);
+
+.btn,
+.btn-second {
+  cursor: pointer;
+  background-color: var(--btn-background-second);
   color: var(--btn-color);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: var(--padding-default);
+  font-weight: bolder;
 }
+
+.btn-second {
+  color: var(--btn-background-second);
+  outline: solid 2px var(--btn-background-second);
+  background-color: white;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--btn-background-second-hover);
+}
+
 input {
   padding: calc(var(--padding-default) - 1px);
   border: 0.5px solid gray;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
 }
+
 #hidden {
   display: none;
 }

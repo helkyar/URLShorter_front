@@ -1,16 +1,14 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
-
-export default function postUrl(params) {
-  console.log(params, "PARAMS OF POST");
+export default function delTemplate(id) {
   return axios
-    .post(`${ENDPOINT}/urls/add`, params)
+    .delete(`${ENDPOINT}/urls/delete/${id}`)
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("TEMPLATE POST", res.data);
+      console.log("TEMPLATE DEL", res.data);
       return res.data;
     })
     .catch(() => {
-      return null;
+      console.log("ERR: 500");
     });
 }

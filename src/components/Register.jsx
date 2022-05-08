@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import register from "helpers/session/session";
 import { useSession } from "helpers/session/useSession";
 
-export const Register = () => {
+export const Register = ({ setOnOpen }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +27,8 @@ export const Register = () => {
   };
 
   useEffect(() => {
-    if (isLogged) navigate("/");
-  }, [isLogged, navigate]);
+    if (isLogged) setOnOpen(false);
+  }, [isLogged]);
 
   return (
     <>
@@ -47,7 +47,9 @@ export const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={(e) => userRegister(e)}>register</button>
+        <button className="btn" onClick={(e) => userRegister(e)}>
+          Register
+        </button>
       </form>
     </>
   );

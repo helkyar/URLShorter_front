@@ -1,12 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 header {
-  margin: 0 1rem;
+  margin: var(--margin-width);
   display: flex;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  margin-right: 1rem;
+  height: 3rem;
+}
+.logo h1 {
+  color: var(--btn-background);
 }
 nav {
   display: flex;
   align-items: baseline;
   margin-left: auto;
-}
-nav * + * {
-  margin-left: 1rem;
+
+  & * + * {
+    margin-left: 1rem;
+  }
+
+  & p {
+    color: var(--btn-background);
+  }
+  & p::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: var(--btn-background);
+    position: relative;
+    top: 0.3em;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  & p:hover::after {
+    transform: scale(1, 1);
+  }
+  & p:hover {
+    font-weight: bolder;
+    cursor: pointer;
+  }
 }
