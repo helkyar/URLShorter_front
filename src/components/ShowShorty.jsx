@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import edit from "assets/img/edit.svg";
 import del from "assets/img/delete.svg";
 
-import delUrl from "helpers/urls/delUrl";
-import patchUrl from "helpers/urls/patchUrl";
+import delUserUrl from "helpers/urls/delUserUrl";
+import patchUserUrl from "helpers/urls/patchUserUrl";
+import { useContext } from "react";
+import Context from "contexts/user";
 
 export const ShowShorty = ({ short, setOnOpen, setSave }) => {
   const { isLogged } = useSession();
+  const { jwt } = useContext(Context);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
@@ -19,10 +22,10 @@ export const ShowShorty = ({ short, setOnOpen, setSave }) => {
     setOnOpen(true);
   };
   const handleEdit = async () => {
-    await patchUrl();
+    await patchUserUrl();
   };
   const handleDelete = async () => {
-    await delUrl(short._id);
+    await delUserUrl(short._id, jwt);
     setSave({ saving: false, rerender: true });
   };
 

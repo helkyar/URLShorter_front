@@ -6,6 +6,7 @@ import { useSession } from "helpers/session/useSession";
 export const Register = ({ setOnOpen }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loger, isLogged } = useSession();
 
@@ -13,10 +14,9 @@ export const Register = ({ setOnOpen }) => {
     e.preventDefault();
     //(!) Validation logic: should be separated form the view
     if (!username.trim() || !password.trim()) {
-      console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username, password };
+    const credentials = { username, password, email };
     //------------------------------------------------------
     await register(credentials, "register");
 
@@ -39,6 +39,13 @@ export const Register = ({ setOnOpen }) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          className="register-username"
+          placeholder="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="register-password"

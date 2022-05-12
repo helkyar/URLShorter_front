@@ -1,19 +1,17 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
-
-export default function postTemplate(params, jwt) {
+export default function delUserUrl(id, jwt) {
   return axios
-    .post(`${ENDPOINT}/template/add`, params, {
+    .delete(`${ENDPOINT}/user-urls/delete/${id}`, {
       headers: {
         "auth-token": jwt,
       },
     })
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("TEMPLATE POST", res.data);
       return res.data;
     })
-    .catch(() => {
-      console.log("ERR: 500");
+    .catch((e) => {
+      throw new Error(`Error in delte user url: ${e}`);
     });
 }

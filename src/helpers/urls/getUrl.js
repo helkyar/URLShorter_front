@@ -6,7 +6,6 @@ export default function getUrl(id) {
     .get(`${ENDPOINT}/urls/${id}`)
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("TEMPLATE GET", res.data);
       return res.data;
     })
     .catch(() => null);

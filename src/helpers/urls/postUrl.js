@@ -7,7 +7,6 @@ export default function postUrl(params) {
     .post(`${ENDPOINT}/urls/add`, params)
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("TEMPLATE POST", res.data);
       return res.data;
     })
     .catch(() => {

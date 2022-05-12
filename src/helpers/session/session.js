@@ -12,22 +12,4 @@ export default function startSession(sessionParams, endpoint) {
     .catch((err) => {
       console.log("ERR: 500", err);
     });
-  // return fetch(`${ENDPOINT}/session/${endpoint}`, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(sessionParams),
-  // })
-  //   .then((res) => {
-  //     if (!res.ok) throw new Error("Response is NOT ok");
-  //     return res.json();
-  //   })
-  //   .then((res) => {
-  //     const { jwt } = res;
-  //     return jwt;
-  //   })
-  //   .catch(() => {
-  //     console.log("ERR: 500");
-  //   });
 }

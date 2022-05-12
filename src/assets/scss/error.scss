@@ -1,0 +1,16 @@
+.error-page {
+  & h1 {
+    text-align: center;
+    color: var(--btn-background);
+    margin-top: 8rem;
+  }
+  & p {
+    text-align: center;
+    color: var(--btn-background);
+  }
+  & button {
+    width: 6rem;
+    margin-left: calc(50% - 3rem);
+    margin-top: 1rem;
+  }
+}

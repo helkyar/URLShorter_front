@@ -7,6 +7,7 @@ export const useSession = () => {
   const navigate = useNavigate();
   const { jwt, setJWT, user, setUser } = useContext(Context);
   let logfail = false;
+
   const loger = useCallback(
     ({ username, password }) => {
       startSession({ username, password }, "login")
