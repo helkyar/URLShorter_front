@@ -8,7 +8,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useSession } from "helpers/session/useSession";
 
 export const Main = () => {
-  const { user } = useContext(Context);
+  const { user, jwt } = useContext(Context);
   const { isLogged } = useSession();
 
   const [url, setUrl] = useState("");
@@ -30,7 +30,7 @@ export const Main = () => {
       setShort([shorty]);
     } else {
       await postUrl({ url, user: user.id });
-      const shorty = await getUserUrls(user.id);
+      const shorty = await getUserUrls(user.id, jwt);
       setShort(shorty);
     }
     setUrl("");
@@ -39,8 +39,10 @@ export const Main = () => {
   useEffect(() => {
     const userUrls = async () => {
       if (user?.id) {
-        const shortys = await getUserUrls(user.id);
-        setShort(shortys);
+        const shortys = await getUserUrls(user.id, jwt);
+        if (shortys) {
+          await setShort(shortys);
+        }
       } else {
         setShort([]);
       }
@@ -49,10 +51,12 @@ export const Main = () => {
   }, [user, save]);
 
   useEffect(() => {
-    const saveUrl = async () => await postUrl({ url: save.url, user: user.id });
+    const saveUrl = async () => {
+      await postUrl({ url: save.url, user: user.id });
+      setSave({ saving: false });
+    };
     if (user?.id && save.saving) {
       saveUrl();
-      setSave({ saving: false });
     }
   }, [user, save]);
 

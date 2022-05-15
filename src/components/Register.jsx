@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import register from "helpers/session/session";
 import { useSession } from "helpers/session/useSession";
 
-export const Register = ({ setOnOpen }) => {
+export const Register = ({ setOnOpen, logView }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -34,11 +34,13 @@ export const Register = ({ setOnOpen }) => {
     <>
       <form className="register-form session-form" onSubmit={userRegister}>
         <input
+          autoFocus="autofocus"
           className="register-username"
           placeholder="username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
         <input
           className="register-username"
@@ -46,6 +48,7 @@ export const Register = ({ setOnOpen }) => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           className="register-password"
@@ -53,6 +56,7 @@ export const Register = ({ setOnOpen }) => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button className="btn" onClick={(e) => userRegister(e)}>
           Register

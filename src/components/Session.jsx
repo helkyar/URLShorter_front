@@ -5,8 +5,8 @@ import { Register } from "components/Register";
 export const Session = ({ setOnOpen, logView, setLogView }) => {
   return (
     <>
-      {logView && <Login setOnOpen={setOnOpen} />}
-      {!logView && <Register setOnOpen={setOnOpen} />}
+      {logView && <Login setOnOpen={setOnOpen} logView={logView} />}
+      {!logView && <Register setOnOpen={setOnOpen} logView={logView} />}
       <button
         className="session-btn btn-second"
         onClick={() => setLogView((state) => !state)}

@@ -71,7 +71,7 @@
   & p {
     font-family: "Courier New", Courier, monospace;
     overflow: hidden;
-    max-width: 17rem;
+    max-width: 48vw;
     white-space: nowrap;
   }
   & a {
@@ -85,9 +85,12 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.5rem;
+  min-width: 12.99rem;
 
   & button {
     min-width: 4rem;
+    flex-grow: 1;
+    padding: 0.2rem 0;
   }
 }
 

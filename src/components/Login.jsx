@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useSession } from "helpers/session/useSession";
 
-export const Login = ({ setOnOpen }) => {
+export const Login = ({ setOnOpen, logView }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pswd, setPswd] = useState("");
@@ -33,11 +33,13 @@ export const Login = ({ setOnOpen }) => {
     <>
       <form className="login-form session-form" onSubmit={userLogin}>
         <input
+          autoFocus="autofocus"
           className="login-username"
           placeholder="username"
           type="text"
           value={user}
           onChange={(e) => setUser(e.target.value)}
+          required
         />
         <input
           className="login-password"
@@ -45,6 +47,7 @@ export const Login = ({ setOnOpen }) => {
           type="password"
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
+          required
         />
         <button className="btn" onClick={(e) => userLogin(e)}>
           Login

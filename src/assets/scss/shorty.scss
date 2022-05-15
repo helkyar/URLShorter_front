@@ -1,6 +1,15 @@
 .shorty-del {
   background-color: red;
+  & img {
+    width: 1rem;
+  }
 }
 .shorty-del:hover {
   background-color: rgb(209, 9, 9);
+}
+
+.shorty-edit {
+  & img {
+    width: 1.4rem;
+  }
 }
