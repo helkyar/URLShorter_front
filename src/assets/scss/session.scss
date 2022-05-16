@@ -12,3 +12,49 @@
   width: 6rem;
   margin-left: calc(50% - 3rem);
 }
+
+.login-password.error {
+  outline: solid 1px red;
+  &::after {
+    position: relative;
+    content: "";
+    &:hover {
+    }
+  }
+}
+
+.register-password.error {
+  outline: solid 1px red;
+  &::after {
+    position: relative;
+    top: 2rem;
+    content: "asº";
+    &:hover {
+    }
+  }
+}
+
+.register-email.error {
+  outline: solid 1px red;
+  &::after {
+    position: relative;
+    content: "";
+    &:hover {
+    }
+  }
+}
+
+.login-error,
+.register-error {
+  background-color: rgba($color: red, $alpha: 0.3);
+  width: 50%;
+  padding: var(--padding-default);
+  border-radius: var(--border-radius);
+  margin: 0 auto 1rem;
+  text-shadow: 0.3px 0.1px black;
+  display: none;
+}
+
+.show {
+  display: inherit;
+}

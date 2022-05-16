@@ -7,6 +7,7 @@ export const Login = ({ setOnOpen, logView }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pswd, setPswd] = useState("");
+  const [show, setShow] = useState("");
   const { loger, isLogged, logfail } = useSession();
 
   const userLogin = async (e) => {
@@ -14,12 +15,15 @@ export const Login = ({ setOnOpen, logView }) => {
 
     //(!) Validation logic: should be separated form the view
     if (!user.trim() || !pswd.trim()) {
+      setShow("show");
       return;
     }
     const credentials = { username: user.trim(), password: pswd.trim() };
     //--------------------------------------------------------
 
-    await loger(credentials);
+    const data = await loger(credentials);
+    if (!data) setShow("show");
+
     setUser("");
     setPswd("");
   };
@@ -31,6 +35,7 @@ export const Login = ({ setOnOpen, logView }) => {
 
   return (
     <>
+      <div className={`login-error error ${show}`}>Wrong credentials</div>
       <form className="login-form session-form" onSubmit={userLogin}>
         <input
           autoFocus="autofocus"

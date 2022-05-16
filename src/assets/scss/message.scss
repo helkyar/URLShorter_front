@@ -1,0 +1,27 @@
+.message {
+  position: absolute;
+  top: 5rem;
+  width: 50%;
+  margin-left: 25%;
+  outline: solid var(--btn-background) 1px;
+  color: var(--btn-background);
+  border-radius: var(--border-radius);
+  padding: var(--padding-default);
+  font-weight: bold;
+  text-align: center;
+  transform: translateY(-10rem);
+  transition: transform ease-out 0.8s;
+}
+.error {
+  outline-color: red;
+  color: red;
+  text-align: center;
+}
+.success {
+  outline-color: rgb(101, 187, 14);
+  color: rgb(101, 187, 14);
+}
+
+.animate {
+  transform: translateY(0);
+}
