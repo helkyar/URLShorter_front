@@ -25,7 +25,7 @@ export const Register = ({ setOnOpen, logView }) => {
       setErrorMsg("Wrong email format");
       setShow("show");
       return;
-    } else if (password.length < 6) {
+    } else if (password.length < 4) {
       setErrorMsg("Password must be at least 4 characters long");
       setShow("show");
       return;
@@ -33,16 +33,16 @@ export const Register = ({ setOnOpen, logView }) => {
     const credentials = { username, password, email };
     //------------------------------------------------------
     const data = await register(credentials, "register");
+    // Maybe an ineficient way to handle login
+    await loger(credentials);
+    setUsername("");
+    setPassword("");
+
     if (!data) {
       setErrorMsg("Username taken");
       setShow("show");
       return;
     }
-
-    // Maybe an ineficient way to handle login
-    await loger(credentials);
-    setUsername("");
-    setPassword("");
   };
 
   useEffect(() => {
