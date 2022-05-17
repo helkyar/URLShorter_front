@@ -26,7 +26,7 @@ export const Register = ({ setOnOpen, logView }) => {
       setShow("show");
       return;
     } else if (password.length < 6) {
-      setErrorMsg("Password must be at least 6 characters long");
+      setErrorMsg("Password must be at least 4 characters long");
       setShow("show");
       return;
     }
